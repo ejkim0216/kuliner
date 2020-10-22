@@ -1,0 +1,208 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Source+Sans+Pro&display=swap');
+
+
+/*공통 또는 초기화 스타일 선언, * 전체선택자*/
+*{box-sizing: border-box; font-family: 'Source Sans Pro', sans-serif;}
+html, body{margin: 0; padding: 0;}/*공간이 뜨면 안되기 때문에(브라우저의 기본값)*/
+header, section, article, nav, aside, footer{display: block;}
+header:after, section:after, article:after, nav:after, aside:after, footer:after{content: ""; display: block; clear: both;}
+/*header:after, clear: both - float 사용할 경우.. 막아줌*/
+h1, h2, h3, h4, h5, h6, p{margin: 0;}
+ul, li{margin: 0;/*위아래, 브라우저에서 제공되는 마진값*/ padding: 0; list-style: none;}
+a{text-decoration: none;}
+.clear{clear: both;} /*<div class="clear"></div> : float에 의해 하단의 콘텐츠 영역이 상단의 영역으로 침범하는 현상을 막을 수 있음*/
+.title{font-family: 'Pacifico', cursive;}
+
+
+/* box-sizing: border-box; 축소개념이 들어간다, 반응형*/
+/*div를 대체할 수 있는 HTML5의 태그들 : header, section, article, nav, aside, main, footer*/
+/*
+.outer_01{box-sizing: border-box/*축소, 패딩을 제외하고, 부모는 고정이고, 내부 자식들을 줄여간다. 간결하게 잡을 수 있다.; width: 400px; height: 300px; padding: 50px; background-color: #ff9900;}
+.inner_01{width: 100%; height: 100%; background-color: #0099ff;}
+/*공간에 대한 규정으로, 설정 파트로 box-sizing: border-box;를 선언했다면 점차 축소에 대한 영역을 진행할 수 있음.*/
+/*
+.outer_02{box-sizing: content-box/*기본개념, 기본사이즈, 너무 확장됨; width: 400px; height: 300px; padding: 50px; background-color: #ff9900;}
+.inner_02{width: 100%; height: 100%; background-color: #0099ff;}
+/*공간에 대한 규정으로, 설정 파트로 box-sizing: content-box;를 선언했다면 점차 확대에 대한 영역을 진행할 수 있음.*/
+/*부모가 계속 늘어남*/
+
+/*가급적 분리시켜야 함*/
+header{width: 100%; height: auto;}
+header .top{width: 100%; height: 30px; background-color: #000;}
+header .top .wrap{width: 1160px; height: 100%;/*height 설정 안해도 됨*/ margin: 0 auto;/*가운데로 몰아야 함*/ padding: 0 10px;/*1160잡았을 때 붙지 않음*/}
+header .top .wrap .info{float: left;}
+header .top .wrap .info ul{}/*한량, 하는 일 없음*/
+header .top .wrap .info ul li{float: left; margin-right: 10px;}
+header .top .wrap .info ul li a{display: block;/*공간을 확실하게 가져오기 위해서*/ line-height: 30px; color: #fff; font-size: 14px;}
+
+header .top .wrap .sns{float: right;}
+header .top .wrap .sns ul{}/*한량, 하는 일 없음*/
+header .top .wrap .sns ul li{float: left; margin-left: 10px;}
+header .top .wrap .sns ul li a{display: block; line-height: 30px; font-size: 14px; color: #fff;}
+header .top .wrap .sns ul li:hover a{color: #ff9900;}
+
+header .main{width: 100%; height: 560px; background-image: url(../img/1.jpg); background-attachment: fixed;/*안쪽에 붙여넣겠다. 꽉 끼우겠다.*/ background-position: 50% 50%;/*사진이 짤리면 안되니까~*/ background-size: cover;/*꽉채운다*/}
+header .main .dark{width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);}
+header .main .dark .wrap{width: 1160px; height: 100%; margin: 0 auto; padding: 0 10px;/*자손한테 계승해준다.*/}/*공간잡기*/
+header .main .dark .wrap .head{width: 100%; height: 66px;}/*안쪽에 색깔을 넣어도 됨*/
+header .main .dark .wrap .head .logo{float: left; padding: 15px 0;}
+header .main .dark .wrap .head .logo a{display: block;}/*조심해야 함, 인라인 요소는 엔터값을 가지고 있음. 짤릴 수 있음*/
+header .main .dark .wrap .head .logo a img{display: block; height: 36px;}/*둘 다 선언해야 함*/
+
+header .main .dark .wrap .head nav{float: right;}
+header .main .dark .wrap .head nav ul{float: left;}
+header .main .dark .wrap .head nav ul li{float: left;}/*분기점*/
+header .main .dark .wrap .head nav ul li a{display: block; line-height: 66px; color: #fff; font-size: 17px; padding: 0 20px; position: relative; text-transform: uppercase;}
+header .main .dark .wrap .head nav ul li:hover a{background-color: rgba(255,255,255,0.5); color: #ff9900;}
+header .main .dark .wrap .head nav ul li a:before{content: ""; position: absolute; bottom: 0; left: 50%; width: 0; height: 4px; background-color: #ff9900; transition: width 0.5s linear;}
+header .main .dark .wrap .head nav ul li a:after{content: ""; position: absolute; bottom: 0; right: 50%; width: 0%; height: 4px; background-color: #ff9900; transition: width 0.5s linear;}
+header .main .dark .wrap .head nav ul li:hover a:before{width: 50%;}
+header .main .dark .wrap .head nav ul li:hover a:after{width: 50%;}
+
+header .main .dark .wrap .head nav .reservation{float: left; padding: 18px 0 18px 20px;}
+
+header .main .dark .wrap .head nav .reservation a{display: block; width: 122px; height: 30px; border-radius:
+4px; text-align: center; line-height: 30px; background-color: #ff5500; color:#fff; text-transform: uppercase;} 
+
+header .main .dark .wrap .main_title{width: 100%; height: calc(100% - 66px);  /*display: table;*/ position: relative;}
+
+.t_center{/*display:table-cell; text-align: center; vertical-align: middle;*/ position: absolute; top:50%; left:50%; transform:translate(-50%, -50%); text-align: center; width: 100%;}
+
+.t_center h1{font-size: 54px; color:#fff; line-height: 72px;}
+.t_center p{font-size: 16px; padding: 40px 0; color:#fff;}
+.t_center .main_btn{font-size: 0;}
+
+.t_center .main_btn a{display: inline-block; width: 202px; height: auto; border:1px solid #ff6600; border-radius:4px; line-height: 42px;  font-size: 16px; color:#fff; font-weight:bold; margin: 0 5px; transition: color 0.5s, background-color 0.5s; vertical-align: middle;}
+
+.t_center .main_btn a:hover{color:#ff6600; background-color: rgba(255, 255, 255, 0.4);}
+
+
+#story{width: 100%; height: 600px; overflow: hidden; padding-top: 80px;}
+#story .wrap{width: 1160px; height: 100%; margin: 0 auto; padding: 0 10px;}
+#story .wrap .section_title{padding-bottom: 40px; text-align: center;}
+#story .wrap .section_title h2{font-size: 54px; line-height: 72px; color:#555;}
+
+#story .wrap .section_title h2 span{color:#ff6600;}
+
+#story .wrap .section_title p{font-size: 16px; color:#555; padding-top: 20px;}
+
+#story .wrap .content{font-size: 0;}
+#story .wrap .content .box{width:calc(50% - 30px); height: 200px; margin: 0 15px; display: inline-block; vertical-align: top;}
+#story .wrap .content .box:nth-child(1){background-image: url(../img/cook-01.jpg); background-position: 50% 80%; border-radius:8px;}
+#story .wrap .content .box:nth-child(2) p{padding: 40px 0;font-size: 16px; color:#555;}
+#story .wrap .content .box:nth-child(2) .arrow{text-align: center;}
+
+#story .wrap .content .box:nth-child(2) .arrow a{display: inline-block;}
+
+#story .wrap .content .box:nth-child(2) .arrow a img{height: 16px;}
+
+#story .wrap .plate_img{padding-top: 100px;}
+
+#story .wrap .plate_img img{width: 100%;}
+
+#special{width: 100%; height: auto; background-color: #edefed;}
+#special .sp_bg{width: 100%; height: 460px; background-image: url(../img/2.jpg); background-size: cover; background-attachment: fixed;}
+#special .sp_bg .dark{width: 100%; height: 100%; background-color: rgba(0,0,0,0.4);}
+#special .wrap{width: 1160px; height: auto; margin: 0 auto; padding: 0 10px; margin-top: -360px;}
+#special .wrap .section_title{padding-bottom: 40px; text-align: center;}
+#special .wrap h2{font-size: 54px; line-height: 72px; color:#fff;}
+
+#special .wrap p{font-size: 16px;color:#fff; padding-top: 20px;}
+
+#special .wrap .content{font-size: 0;}
+#special .wrap .content .menu{width: calc(100% / 3 - 30px); height: 360px; margin: 0 15px 30px; background-color: #aaffff; display: inline-block;/*베이스라인*/ vertical-align: top; padding: 30px; border-radius: 8px; font-size: 16px; background-size: cover; background-position: 50% 50%; cursor: pointer;} /*높이값을 잡아야 함, 알수 없기 때문*/
+#special .wrap .content .menu:nth-child(1){width: calc(100% / 3 * 2 - 30px); background-position: 50% 50%; background-image: url(../img/menu_1.jpg);}
+#special .wrap .content .menu:nth-child(2){background-image: url(../img/menu_2.jpg);}
+#special .wrap .content .menu:nth-child(3){background-image: url(../img/menu_3.jpg);}
+#special .wrap .content .menu:nth-child(4){background-image: url(../img/menu_4.jpg);}
+#special .wrap .content .menu:nth-child(5){background-image: url(../img/menu_5.jpg);}
+#special .wrap .content .menu .dark{width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); border-radius: 8px; padding: 30px; position: relative; opacity: 0; transition: opacity 0.3s;}
+#special .wrap .content .menu:hover .dark{opacity: 1;}/*최초 분기점*/
+
+#special .wrap .content .menu .dark h3{font-size: 28px; color: #fff; text-transform: capitalize;}
+#special .wrap .content .menu .dark p{font-size: 18px; color: #fff;} /*글자는 상속된다*/
+#special .wrap .content .menu .dark .price{position: absolute; right: 30px; bottom: 30px; font-size: 28px; color: #ff6600; line-height: 1;/*1배수만 가져오겠다*/}
+
+#special .wrap .arrow{padding-bottom: 40px; text-align: center;}
+
+#dishes{width: 100%; height: auto; background-image: url(../img/3.png); background-attachment: fixed; background-size: cover; background-position: 50% 50%; padding-top: 40px;}
+#dishes .wrap{width: 1160px; margin: 0 auto;/*가로 값을 가지고 있다, 가운데 배치*/}
+#dishes .wrap .section_title{padding: 20px 0; text-align: center;}
+#dishes .wrap .section_title h2{font-size: 54px; line-height: 72px; color: #555; text-transform: capitalize;}
+#dishes .wrap .section_title p{padding-top: 20px; padding-bottom: 60px; font-size: 16px; color: #555;}
+#dishes .wrap .content{}
+#dishes .wrap .content .part{padding-bottom: 40px;}
+#dishes .wrap .content .part h3{font-size: 24px; color: #999; padding-bottom: 20px; text-align: center;}
+#dishes .wrap .content .part .menu_box{position: relative; font-size: 0;}/*자식 영역을 자기 영역으로 가져온다. float은 공간이 없다?*/
+
+#dishes .wrap .content .part .menu_box:before{content: ""; position: absolute; width: 1px; height: 100%; background-color: #363636;/*공간을 미리 잡는다.*/ left: 50%; top: 0; transform: translateX(-50%);}
+
+#dishes .wrap .content .part .menu_box .menu_space{width: calc(50% - 30px); margin: 0 15px; display: inline-block; vertical-align: top; font-size: 16px;}
+
+#dishes .wrap .content .part .menu_box .menu_space .menu_detail{padding-bottom: 40px;}
+
+#dishes .wrap .content .part .menu_box .menu_space .menu_detail h4{font-size: 20px; color: #555;}
+#dishes .wrap .content .part .menu_box .menu_space .menu_detail p{color: #555;}
+#dishes .wrap .content .part .menu_box .menu_space .menu_detail .price{display: block;/*100%차지*/ text-align: right; font-size: 20px; color: #ff6600;}
+
+#dishes .wrap .arrow{padding-bottom: 40px; text-align: center;}
+
+#service{background-color: #ededed; padding-top: 60px;}
+#service .wrap{width: 1160px; margin: 0 auto; text-align: center;}
+#service .wrap .section_title{}
+#service .wrap .section_title h2{font-size: 54px; line-height: 72px; color: #555; text-transform: capitalize;}
+#service .wrap .section_title p{font-size: 16px; text-transform: uppercase; color: #555;} /*부제*/
+#service .wrap .content{padding: 80px 0 40px; font-size: 0;}
+#service .wrap .content .service_box{width: calc(100% / 3 - 30px); height: 360px; margin: 0 15px; display: inline-block; background-color: #ffdddd; border-radius: 8px; font-size: 16px; padding: 20px; vertical-align: top;/*틀어진 부분을 윗공간으로 잡는다.*/ transition: transform 0.5s, box-shadow 0.5s ;/*시간차를 잡는다, 동시에 잡아야 함(멀티) transform에는 ,사용하면 에러남.*/}/*최초 분기점*/
+#service .wrap .content .service_box img{margin: 40px 0;}/*padding을 잡으면 찌그러진다. 높이가 없기 때문에*/
+#service .wrap .content .service_box h3{font-size: 20px; color: #555;}
+#service .wrap .content .service_box p{padding-top: 20px; color: #555;}
+#service .wrap .content .service_box:hover{transform: scale(1.05); box-shadow: 0 0 12px #ff0000;}/*1이 100%*/
+
+#service .wrap .arrow{padding-bottom: 40px; /*text-align: center;안해도 됨, wrap이 공간을 잡고 있기 때문*/}
+
+#offer{width: 100%; height: 460px; background-image: url(../img/6.jpg); background-size: cover;/*꽉채우겠다.*/ background-position: 50% 50%; background-attachment: fixed;}
+#offer .dark{width: 100%; height: 100%; background-color: rgba(0,0,0,0.4);}
+#offer .dark .wrap{width: 1160px; margin: 0 auto; height: 100%; position: relative; text-align: center; }
+#offer .dark .wrap .section_title{position: relative; top:50%; transform: translateY(-50%); width: 100%;}
+#offer .dark .wrap .section_title h2{font-size: 54px; line-height: 72px;/*문단높이*/ color: #fff;/*제일 밝은 색*/ text-transform: capitalize;}
+#offer .dark .wrap .section_title h2 span{text-transform: lowercase;}
+#offer .dark .wrap .section_title p{font-size: 14px; color: #fff; padding: 40px 0;/*패딩이 단단하다. 확실한 공간을 잡고 있다.*/}
+#offer .dark .wrap .section_title .send_box{width: 740px; height: 60px; border: 2px solid #ff6600; background-color: #fff; border-radius: 8px; /*margin: 0 auto; 현재 블록일때, 블록영역일때.*/ display: inline-block;/*부모가 가운데로 가있으라고 함.*/ font-size: 0;}
+
+/* 가운데 정렬이 어렵다.
+일정 공간이 부여된 박스를 가로 방향으로 중앙에 배치하고자 할 때,
+display:block인 경우, 본인에게 margin: 0 auto;를 부여하면 양 사이드에 마진 값을 양분하여 중앙 위치가 가능함.
+
+display:inline-block인 경우, 본인한테 뭔가를 줄 수 없다. 
+직속 부모 또는 그 이상의 조상(한 줄 공간이 존재하는 블록 형태를 가진 요소)에게 text-align:center를 부여하여 자식을 가운데로 이동시킨다.
+*/
+
+#offer .dark .wrap .section_title .send_box input{display: inline-block; vertical-align: middle; width: calc(100% - 60px); line-height: 56px; border: none; background-color: transparent; padding: 0 20px; font-size: 24px; outline: none;/*함부로 쓰면 안됨, 웹 접근성에 어긋남*/}
+#offer .dark .wrap .section_title .send_box button{display: inline-block; vertical-align: middle; width: 40px; line-height: 56px;/*인라인 블록에 대한 높이값*/ font-size: 30px; color: #ff6600; border: none; background-color: transparent; cursor: pointer;}
+
+
+#register{height: 400px; background-color: #ededed;}
+#register .wrap{width: 1160px; margin: 0 auto; padding-top: 40px; padding-bottom: 40px; height: 100%; font-size: 0;}
+#register .wrap > div{width: calc(50% - 30px); margin: 0 15px 40px; height: 100%; font-size: 16px; display: inline-block; vertical-align: top;}
+#register .wrap > div h2{font-size: 54px; line-height: 72px; color: #363636; padding-bottom: 40px; text-align: center;}
+#register .wrap > div .form_line{padding-bottom: 10px;}
+#register .wrap > div .form_line > input{border: none;/*공간을 모른다.*/ border-bottom: 1px solid #999; color: #363636; width: 100%; height: 36px; background-color: transparent;}
+#register .wrap > div .form_line:last-child > div.check{float: left; font-size: 14px;}
+#register .wrap > div .form_line:last-child > div.check span{color: #363636;}
+#register .wrap > div .form_line:last-child > button{float: right; padding: 10px 30px;/*확장시킨다.*/ border-radius: 4px; border: none; background-color: #ff6600; color: #fff; font-size: 18px; text-transform: uppercase; cursor: pointer;}
+
+footer{padding: 40px 0; background-color: #363636; text-align: center;}/*배경색이 어두워야 안정감이 있다.*/
+footer .sns{padding-bottom: 30px;}
+footer .sns ul{font-size: 0;}
+footer .sns ul li{display: inline-block; margin: 0 20px;}
+footer .sns ul li a{display: block; width: 40px; height: 40px; border: 1px solid #fff; border-radius: 50%; line-height: 38px; color: #fff; font-size: 20px; transition: color 0.5s, border 0.5s;}
+footer .sns ul li:hover a{color: #ff6600; border: 1px solid #ff6600;}/*분기점*/
+footer p{font-size: 14px; color: #fff;}
+
+
+button.top{position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; border: none; background-color: #ff6600; border-radius: 8px; color: #fff; font-size: 48px; line-height: 60px; cursor: pointer; outline: none;}
+
+
